@@ -6,7 +6,7 @@ currentdir = os.path.dirname(os.path.abspath(
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-from app import create_app
+from app.___init__ import create_app
 
 config_name = os.getenv('APP_SETTINGS')
 app = create_app(config_name)

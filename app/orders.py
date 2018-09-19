@@ -5,24 +5,23 @@ from models import orders
 
 
 class Orders(Resource):
-    def get(self):
-        return {'orders': orders}
 
-    """ Place a new Order method """
+    """ Get specific order method """
 
-    def post(self, order_id):
+    def get(self, order_id):
         if next(filter(lambda x: x['order_id'] == order_id, orders), None):
-            return {'message': "The order with order id '{}' already exists.".format(order_id)}, 400
+            return {'order': Orders}, 200 if Orders else 404
 
-        data = data = request.get_json()
-
+        """ Place a new Order method """
+    def post(self, order_id):
         order = {
-            'order_id': order_id,
-            'name': data['name'],
-            'dish': data['dish'],
-            'price': data['price'],
-            'address': data['address']
+            'order_id': 5,
+            'name': 'Queen Latifa',
+            'dish': 'Mac cheese',
+            'price': 1250.00,
+            'address': 'Gigiri'
         }
         orders.append(order)
-
         return order, 201
+
+
