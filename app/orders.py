@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 
-from models import orders
+from . import models
 
 
 class Orders(Resource):
@@ -15,16 +15,13 @@ class Orders(Resource):
         help="This field cannot be left blank"
     )
 
+    def get(self):
+       """ Get specific order method """
+       return {'order': models.orders}
 
-
-    """ Get specific order method """
-
-    def get(self, order_id):
-        if next(filter(lambda x: x['order_id'] == order_id, orders), None):
-            return {'order': Orders}, 200 if Orders else 404
-
-        """ Place a new Order method """
+        
     def post(self, order_id):
+        """ Place a new Order method """
         order = {
             'order_id': 5,
             'name': 'Queen Latifa',
@@ -32,15 +29,16 @@ class Orders(Resource):
             'price': 1250.00,
             'address': 'Gigiri'
         }
-        orders.append(order)
+        models.orders.append(order)
         return order, 201
 
-        #Upadate status of a specific order method 
+        
     def put(self, order_id):
+        '''Upadate status of a specific order method'''
 
         data = Orders.parser.parse_args()
 
-        order = next(filter(lambda x: x['order_id'] == order_id, orders), None)
+        order = next(filter(lambda x: x['order_id'] == order_id, models.orders), None)
         if order is None:
             order = {
                 'order_id': order_id,
@@ -49,7 +47,7 @@ class Orders(Resource):
                 'price': data['price'],
                 'address': data['address']
             }
-            orders.append(order)
+            models.orders.append(order)
         else:
             order.update(data)
         return order
