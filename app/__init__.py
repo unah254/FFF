@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import  Api
 from instance.config import app_config
 
-from orders import Orders
+from . import orders
 
 
 
@@ -20,8 +20,8 @@ def create_app(config_name):
     api = Api(app)
 
         
-    api.add_resource(Orders, '/api/v1/orders')
-    api.add_resource(Orders, '/api/v1/orders/<int:order_id>')
+
+    api.add_resource(orders.Orders, '/api/v1/orders')
 
 
 
