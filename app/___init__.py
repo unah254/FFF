@@ -1,7 +1,10 @@
 from flask import Flask
-from flask_restful import Api
+from flask_restful import  Api
+# from flask_api import FlaskAPI
+from instance.config import app_config
 
-import config
+from orders import Orders
+
 
 
 def create_app(config_name):
@@ -11,11 +14,15 @@ def create_app(config_name):
     :param config_name: The configuration name to load the configuration
     :return: The app to be initialized
     """
+    app = Flask(__name__, instance_relative_config=True)
+    app.config.from_object(app_config[config_name])
+    app.config.from_pyfile('config.py')
 
-    app = Flask(__name__) 
     api = Api(app)
 
-    app.config.from_object('config')
-    
+        
+    api.add_resource(Orders, '/api/v1/orders')
+
+
 
     return app
