@@ -52,6 +52,14 @@ class Orders(Resource):
             order.update(data)
         return order
 
+       
+
+    def delete(self, order_id):
+        """ delete an order method"""
+        global orders
+        orders = list(filter(lambda x: x['order_id'] != order_id, models.orders))
+        return {'message': 'Deleted'}, 200
+
         
 
 
