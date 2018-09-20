@@ -8,8 +8,8 @@ sys.path.insert(0, parentdir)
 
 from app import create_app
 
-config_name = os.getenv('FLASK_CONFIG')
-app = create_app('development')
+#config_name = os.getenv('APP_SETTINGS')
+app = create_app(os.getenv('APP_SETTINGS') or 'development')
 
 
 if __name__ == '__main__':

@@ -2,7 +2,8 @@ from flask import Flask
 from flask_restful import  Api
 from instance.config import app_config
 
-from . import orders
+from app.api.v1.views import Orders, Order
+
 
 
 
@@ -15,13 +16,13 @@ def create_app(config_name):
     """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
+    
 
     api = Api(app)
 
         
 
-    api.add_resource(orders.Orders, '/api/v1/orders/<int:order_id>')
+    api.add_resource(Order, '/api/v1/order/<int:order_id>')
 
 
 
