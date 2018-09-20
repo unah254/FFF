@@ -2,7 +2,8 @@ from flask import Flask
 from flask_restful import  Api
 from instance.config import app_config
 
-from app.api.v1.views import Orders, Order
+
+from .api.v1.views import SingleOrder, Orders, Createmeal
 
 
 
@@ -19,12 +20,12 @@ def create_app(config_name):
     
 
     api = Api(app)
+    api.add_resource(SingleOrder, '/api/v1/orders/<int:id>')
+    api.add_resource( Orders, '/api/v1/orders')
+    api.add_resource( Createmeal, '/api/v1/orders')
 
         
 
-    api.add_resource(Order, '/api/v1/order/<int:order_id>')
-
-
-
-
+    
+    
     return app
