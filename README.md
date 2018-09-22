@@ -1,5 +1,7 @@
 # fast food fast API
 
+[![Build Status](https://travis-ci.com/unah254/FFF.svg?branch=ft-test-models)](https://travis-ci.com/unah254/FFF)
+
 API Endpoints
 
 | EndPoint              | Functionality                 |
