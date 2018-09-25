@@ -27,6 +27,11 @@ $ export APP_SETTINGS=development
 $ python run.py
 
 ```
+# Testing
+```
+$ nosetests
+```
+
 
 
 
