@@ -55,6 +55,8 @@ class Createmeal(Resource):
     def post(self):
         ''' place new order'''
         data = Createmeal.parser.parse_args()
+
+
         name = data['name']
         description = data['description']
         price = data['price']
@@ -64,7 +66,7 @@ class Createmeal(Resource):
         if not Validators().valid_food_description(description):
             return {'message': 'Enter valid food description'}, 400
 
-        order = Mealorder(name=name, description=description, price=price)
+        order = Mealorder(name, price, description)
 
         orders.append(order)
 
