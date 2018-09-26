@@ -29,7 +29,7 @@ $ python run.py
 ```
 # Testing
 ```
-$ nosetests
+$ python -m pytest
 ```
 
 
