@@ -5,13 +5,13 @@
 
 # API Endpoints
 
-| EndPoint              | Functionality                 |
-| ----------------------| ------------------------------|
-| GET /orders           | Get all the orders.           |
-| GET /orders/<orderId> | Fetch a specific order        |
-| POST /orders          | Place a new order.            |
-| PUT /orders/<orderId> | Update the status of an order.|
-| PUT /orders/<orderId> | Delete a specific order.      |
+| EndPoint                | Functionality                 |
+| ------------------------| ------------------------------|
+| api/v1/orders           | Get all the orders.           |
+| api/v1/order/<orderId>  | Fetch a specific order        |
+| api/v1/order            | Place a new order.            |
+| api/v1/orders/<orderId> | Update the status of an order.|
+| api/v1/order/<orderId>  | Delete a specific order.      |
 
 # Prerequisites
 1.Python 3: https://www.python.org/downloads/                                        
@@ -29,7 +29,7 @@ $ python run.py
 ```
 # Testing
 ```
-$ nosetests
+$ python -m pytest
 ```
 
 
