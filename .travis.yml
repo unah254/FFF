@@ -18,7 +18,7 @@ install:
 
 script:
 
-  - py.test --cov=app tests/
+ - py.test
 
 
 
