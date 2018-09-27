@@ -105,3 +105,6 @@ class TestMeals(TestCase):
 
     def tearDown(self):
         self.app_context.pop()
+
+if __name__ == "__main__":     
+    unittest.main()
