@@ -98,6 +98,7 @@ class SingleOrder(Resource):
         if order:
             if order.status == "Pending":
                 order.status = "Accepted"
+            
                 return {'message':'Order accepted'}, 200
 
             if order.status == "Accepted":
@@ -105,7 +106,8 @@ class SingleOrder(Resource):
 
                 return {'message':'Order completed'}, 200
 
-        return {'message':"Not found"}, 404
+        else: 
+           return {'message':"Not found"}, 404
 
     def delete(self, id):
         ''' Delete a single order '''
