@@ -10,8 +10,8 @@ install:
 
 script:
 
- - python -m pytest --cov-report term-missing --cov=app
+ - py.test tests/ --doctest-modules --pep8 coveralls -v --cov tests --cov-report term-missing
  
 after_success:
 
-  - coveralls
+  - tests
