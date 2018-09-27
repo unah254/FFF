@@ -7,7 +7,7 @@ python:
 install:
 
   - pip install -r requirements.txt
-  - pip install coveralls  
+  - pip install coveralls codecov 
   
 
 script:
@@ -18,4 +18,5 @@ after_success:
 
   - coveralls
   -  coverage xml
+  - codecov --token=8e190961-0d12-463e-9385-c7bb0de21426
   
