@@ -12,7 +12,7 @@ install:
 
 script:
 
- -  python -m pytest --cov-report term-missing --cov=app
+ -  python -m pytest 
  
 after_success:
 
