@@ -138,7 +138,7 @@ class SingleOrder(Resource):
             return {'message': "Not found"}, 404
 
 
-def delete(self, id):
+    def delete(self, id):
         ''' Delete a single order '''
 
         order = Mealorder().get_id(id)
