@@ -1,4 +1,3 @@
-# imported necessary modules to create flask microframework
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 # imported module to validate the inputs
@@ -126,6 +125,12 @@ class SingleOrder(Resource):
                 order.status = "Completed"
 
                 return {'message': 'Order completed'}, 200
+
+            elif status == "Declined":
+                order.status = "Declined"
+
+                return {'message': 'Order declined'}, 202
+                
             elif status == "Pending" or status == "":
                 return {'message': 'Please update the order status to either Accepted or Completed'}, 400
 
@@ -136,7 +141,7 @@ class SingleOrder(Resource):
 def delete(self, id):
         ''' Delete a single order '''
 
-        order = Mealorder().get_id(order_id=id)
+        order = Mealorder().get_id(id)
         if order:
             orders.remove(order)
             return {'message': "Deleted"}, 200
