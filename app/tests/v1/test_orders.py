@@ -5,9 +5,9 @@ from app import create_app
 
 from app.api.v1.views import SingleOrder, Orders, Createmeal
 class TestMeals(TestCase):
-    '''Test the orders.'''
+    '''Test the orders'''
     def setUp(self):
-        """Define test variables and initialize app."""
+        """Define test variables and create an istance of an order"""
         self.app = create_app("testing")
         self.client = self.app.test_client()
         self.app_context = self.app.app_context()
@@ -33,15 +33,9 @@ class TestMeals(TestCase):
     def test_place_new_order(self):
         ''' Test to place an order '''
 
-        order_data = {
-            "name":"Biriani",
-            "description":"Chicken Biriani",
-            "price":850
-        }
-
         response = self.client.post(
             "/api/v1/orders",
-            data=json.dumps(order_data),
+            data=json.dumps(self.order_data),
             headers={"content-type":"application/json"}
         )
 
@@ -52,7 +46,7 @@ class TestMeals(TestCase):
     def test_get_single_order(self):
         ''' Test to get single order '''
         
-        res = self.client.post(
+        neworder = self.client.post(
             "/api/v1/orders",
             data=json.dumps(self.order_data),
             headers={"content-type":"application/json"}
@@ -61,7 +55,7 @@ class TestMeals(TestCase):
                 "/api/v1/orders/1", content_type='application/json')
 
         self.assertEqual(response.content_type, 'application/json')
-        print(res, response)
+        print(neworder, response)
         self.assertEqual(response.status_code, 200)
         self.assertNotEqual(response.status_code, 404)
 
@@ -90,7 +84,7 @@ class TestMeals(TestCase):
     def test_delete_order_not_found(self):
         ''' Test to delete order'''
 
-        response = self.client.post(
+        self.client.post(
             "/api/v1/orders",
             data=json.dumps(self.order_data),
             headers={"content-type":"application/json"}

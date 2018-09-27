@@ -9,7 +9,7 @@ class Config(object):
 
 
 class Development(Config):
-    #Configuration for development
+    '''Configuration for development'''
     DEBUG = True
 
 
