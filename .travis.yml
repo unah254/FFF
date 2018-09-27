@@ -12,7 +12,7 @@ install:
 
 script:
 
- -  pytest --cov=app/tests/v1
+ -  pytest
  
 after_success:
 
