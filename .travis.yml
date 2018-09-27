@@ -7,13 +7,11 @@ python:
 install:
 
   - pip install -r requirements.txt
-  - pip install coveralls
-  - pip install coverage
   
 
 script:
 
- - python -m pytest --cov-report term-missing
+ - python -m pytest
  
 after_success:
 
