@@ -12,7 +12,7 @@ install:
 
 script:
 
- - pytest --with-coverage --cover-package=app app/tests  
+ - py.test --with-coverage --cover-package=app app/tests  
  
 after_success:
 
