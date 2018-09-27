@@ -12,7 +12,7 @@ install:
 
 script:
 
- - python -m pytest --with-coverage  
+ - python -m pytest 
  
 after_success:
 
