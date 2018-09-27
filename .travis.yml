@@ -7,11 +7,12 @@ python:
 install:
 
   - pip install -r requirements.txt
+  - pip install coveralls
 
 script:
 
- - py.test tests/ --doctest-modules --pep8 coveralls -v --cov tests --cov-report term-missing
+ - python -m pytest 
  
 after_success:
 
-  - tests
+  - coveralls
