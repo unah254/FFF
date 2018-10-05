@@ -116,6 +116,11 @@ class SingleOrder(Resource):
         order = Mealorder().get_id(id)
         data = UpdateStatus.parser.parse_args()
         status = data['status']
+
+        """ 
+        Status codes
+        1 : Accepted
+        """
         if order:
             if status == "Accepted":
                 order.status = "Accepted"
@@ -134,6 +139,10 @@ class SingleOrder(Resource):
             elif status == "Pending" or status == "":
                 return {'message': 'Please update the order status to either Accepted or Completed'}, 400
 
+            else :
+                return {
+                    "Message":"Failed"
+                }
         else:
             return {'message': "Not found"}, 404
 
